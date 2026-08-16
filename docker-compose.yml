@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  fastapi:
+    build: .
+    container_name: ai-knowledge-backend
+    ports:
+      - "8000:8000"
+    environment:
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - API_KEY=${API_KEY}
+      - LLM_MODEL=${LLM_MODEL:-gemini-1.5-pro}
+      - EMBEDDING_MODEL=${EMBEDDING_MODEL:-gemini-embedding-exp-03-07}
+      - CHUNK_SIZE=${CHUNK_SIZE:-500}
+      - CHUNK_OVERLAP=${CHUNK_OVERLAP:-50}
+      - RETRIEVAL_TOP_K=${RETRIEVAL_TOP_K:-8}
+      - FINAL_TOP_K=${FINAL_TOP_K:-5}
+      - SEMANTIC_WEIGHT=${SEMANTIC_WEIGHT:-0.6}
+      - KEYWORD_WEIGHT=${KEYWORD_WEIGHT:-0.4}
+      - MAX_MEMORY_MESSAGES=${MAX_MEMORY_MESSAGES:-10}
+      - MAX_UPLOAD_SIZE_MB=${MAX_UPLOAD_SIZE_MB:-10}
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+    volumes:
+      - ./data:/app/data
+    command: uvicorn api.main:app --host 0.0.0.0 --port 8000
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    networks:
+      - app-network
+
+  streamlit:
+    build: .
+    container_name: ai-knowledge-frontend
+    ports:
+      - "8501:8501"
+    environment:
+      - BACKEND_URL=http://fastapi:8000
+      - API_KEY=${API_KEY}
+    depends_on:
+      fastapi:
+        condition: service_healthy
+    command: streamlit run app.py --server.port 8501 --server.address 0.0.0.0 --server.enableCORS false
+    restart: unless-stopped
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

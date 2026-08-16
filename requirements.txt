@@ -1,0 +1,41 @@
+# Core Framework
+fastapi
+uvicorn[standard]
+pydantic
+pydantic-settings
+
+# Google Gemini SDK
+google-genai
+
+# Frontend
+streamlit
+
+# Document Processing
+PyMuPDF
+
+# Vector Search
+faiss-cpu
+rank-bm25
+
+# Utilities
+python-dotenv
+python-multipart
+
+# Testing
+pytest
+pytest-asyncio
+pytest-cov
+
+# HTTP Client
+httpx
+aiofiles
+
+# Production
+gunicorn
+
+# Type checking
+typing-extensions
+
+# Evaluation & Visualization
+plotly
+pandas

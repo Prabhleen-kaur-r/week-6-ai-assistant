@@ -1,0 +1,37 @@
+[
+    {
+        "id": "q1",
+        "question": "What are the standard working hours?",
+        "expected_sources": ["company_policy.pdf", "employee_handbook.pdf"],
+        "expected_keywords": ["9:00", "AM", "6:00", "PM", "hours"],
+        "category": "policy"
+    },
+    {
+        "id": "q2",
+        "question": "Is remote work allowed?",
+        "expected_sources": ["remote_work_policy.pdf"],
+        "expected_keywords": ["remote", "work", "allow", "policy"],
+        "category": "policy"
+    },
+    {
+        "id": "q3",
+        "question": "What is the company policy on vacation days?",
+        "expected_sources": ["employee_handbook.pdf"],
+        "expected_keywords": ["vacation", "days", "leave", "policy"],
+        "category": "policy"
+    },
+    {
+        "id": "q4",
+        "question": "How many sick days are employees allowed?",
+        "expected_sources": ["employee_handbook.pdf"],
+        "expected_keywords": ["sick", "days", "allowed", "leave"],
+        "category": "policy"
+    },
+    {
+        "id": "q5",
+        "question": "What is the dress code for the office?",
+        "expected_sources": ["company_policy.pdf"],
+        "expected_keywords": ["dress", "code", "office", "attire"],
+        "category": "policy"
+    }
+]

@@ -1,0 +1,1 @@
+"""API module for the AI Knowledge Base Assistant."""

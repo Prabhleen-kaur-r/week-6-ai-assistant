@@ -1,0 +1,1 @@
+"""Configuration module for the AI Knowledge Base Assistant."""
