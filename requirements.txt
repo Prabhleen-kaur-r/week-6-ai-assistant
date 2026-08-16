@@ -9,6 +9,7 @@ google-genai
 
 # Frontend
 streamlit
+requests
 
 # Document Processing
 PyMuPDF
@@ -20,22 +21,17 @@ rank-bm25
 # Utilities
 python-dotenv
 python-multipart
+aiofiles
+httpx
+
+# Evaluation & Visualization
+plotly
+pandas
 
 # Testing
 pytest
 pytest-asyncio
 pytest-cov
 
-# HTTP Client
-httpx
-aiofiles
-
-# Production
-gunicorn
-
-# Type checking
+# Type checking / compatibility
 typing-extensions
-
-# Evaluation & Visualization
-plotly
-pandas
